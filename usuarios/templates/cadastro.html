@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'cadastro/css/cadastro.css' %}">
+</head>
+<body>
+    <div class="main-login">
+                <div class="left-login">
+                    <h1>Faça Seu Cadastro <br> e comece sua jornada conosco</h1>
+                    <img src="{% static %}" class="left-login-image" alt="Login">
+                </div>
+    <div class="right-login">
+                <div class="card-login">
+                    <div class="container">
+                        <h2>Cadastro</h2>
+                        <form action="{% url 'cadastro' %}" method="POST" class="textfield">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="usuario">Usuário</label>
+                            <input type="text" name="usuario" placeholder="Usuário">
+                        <div class='textfield'>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="Email">
+                        <div class='textfield'>
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" placeholder="Senha">
+                        <div class='textfield'>
+                            <label for="confirma_senha">Confirmar senha</label>
+                            <input type="password" name="confirma_senha" placeholder="Confirmar senha"> 
+                            <label for="user-type">Tipo de Usuário:</label>
+                            <select id="user-type" name="user-type" class="form-control">
+                            <option value="estudante">Estudante</option>
+                            <option value="anfitriao">Anfitrião</option>
+                            </select>
+                        </div>
+        
+        <div class="form-group estudante-fields">
+            <label for="nome-pai">Nome do Pai:</label>
+            <input type="text" id="nome-pai" name="nome-pai" class="form-control">
+            
+            <label for="nome-mae">Nome da Mãe:</label>
+            <input type="text" id="nome-mae" name="nome-mae" class="form-control">
+            
+            <!-- Outros campos específicos do estudante -->
+        </div>
+        
+        <div class="form-group anfitriao-fields">
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" class="form-control">
+            
+            <!-- Outros campos específicos do anfitrião -->
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("user-type").addEventListener("change", function() {
+        var userType = this.value;
+        
+        var estudanteFields = document.querySelector(".estudante-fields");
+        var anfitriaoFields = document.querySelector(".anfitriao-fields");
+        
+        if (userType === "estudante") {
+            estudanteFields.style.display = "block";
+            anfitriaoFields.style.display = "none";
+        } else if (userType === "anfitriao") {
+            estudanteFields.style.display = "none";
+            anfitriaoFields.style.display = "block";
+        } else {
+            estudanteFields.style.display = "none";
+            anfitriaoFields.style.display = "none";
+        }
+        });
+    </script>
+    </body>
+    </html>
