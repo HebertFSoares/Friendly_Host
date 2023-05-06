@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+  body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -13,27 +13,37 @@ body {
   }
   
   .main-login {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
   
   .left-login {
-    flex: 1;
-    text-align: center;
-    padding: 40px;
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   
   .left-login h1 {
-    font-size: 32px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #007bff;
+    font-size: 2vw;
     margin-bottom: 20px;
   }
   
-  .left-login-image {
-    width: 100%;
-    max-width: 400px;
-  }
+  .left-login-image{
+    width: 35vw;
+}
   
   .right-login {
     flex: 1;
@@ -43,7 +53,13 @@ body {
   .card-login {
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    padding: 18px;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
   }
   
   .container {
@@ -52,8 +68,9 @@ body {
   }
   
   h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: 800;
+    margin: 2;
   }
   
   .form-group {
@@ -70,8 +87,22 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 10px;
   }
   
+  .textfield select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
   #user-type {
     width: 100%;
     padding: 8px;
@@ -86,11 +117,18 @@ body {
   }
   
   .btn {
-    padding: 10px 20px;
-    font-size: 16px;
+    width: 100%;
+    padding: 16px 0px;
     border: none;
-    border-radius: 4px;
+    margin: 5px;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
     cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #007bff;
   }
   
   .btn-primary {
@@ -105,7 +143,13 @@ body {
     color: #007bff;
     text-decoration: none;
   }
-  .estudante-fields,
-  .anfitriao-fields {
-    display: none;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  
+  .logo img {
+    width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
+  }
+  
