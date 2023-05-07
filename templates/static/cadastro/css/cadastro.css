@@ -154,3 +154,61 @@
   .logo img {
     width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
   }
+  body.light-mode {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  body.dark-mode {
+    background-color: #000000;
+    color: #f5f5f5;
+  }
+
+.toggle-mode-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .toggle-mode-button:hover {
+    opacity: 0.8;
+  }
+  
+  .toggle-mode-button .icon {
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+  }
+  
+  /* Ícone da lua */
+  .toggle-mode-button .moon-icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-image: url('../img/moon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+  }
+  
+  /* Estilo quando o botão estiver no modo escuro */
+  .dark-mode .toggle-mode-button {
+    background-color: #333;
+    color: #000000;
+  }
+  
+.dark-mode input[type="text"],
+.dark-mode input[type="password"],
+.dark-mode label {
+  color: #000000;
+}
+.dark-mode p {
+    color:  #000000;
+  }
+  
