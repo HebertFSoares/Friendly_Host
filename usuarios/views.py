@@ -36,7 +36,7 @@ def cadastro(request):
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
         
-         # Cria o perfil do usuário com os campos extras
+        # Cria o perfil do usuário com os campos extras
          
         perfil = Perfil.objects.create(
             usuario = user,
@@ -57,7 +57,7 @@ def cadastro(request):
             comodidades = comodidades
          )
         
-        return render(HttpResponse("Certo"))
+        return HttpResponse("Certo")
     
     elif request.method == "GET":
         return render(request, 'cadastro.html')

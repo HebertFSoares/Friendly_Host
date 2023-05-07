@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    data_nascimento = models.DateField()
-    user_type = models.CharField(max_length=50)
-    estado_civil = models.CharField(max_length=50)
+    data_nascimento = models.DateField(null=True, blank=True)
+    user_type = models.CharField(max_length=50, null=True, blank=True)
+    estado_civil = models.CharField(max_length=50, null=True, blank=True)
     
     # Campos extras para o tipo de usuário "estudante"
     
