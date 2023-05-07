@@ -144,6 +144,11 @@ def login(request):
         user = auth.authenticate(username=usuario, password=senha)
         
         if not user:
+            messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
+            return redirect(reverse('login'))
+        
+        if not usuario or not senha:
+            messages.add_message(request, constants.ERROR, 'Por favor, preencha todos os campos.')
             return redirect(reverse('login'))
         
         auth.login(request, user)
