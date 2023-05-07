@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import Perfil
 from django.http import HttpResponse
 import time
+from django.contrib import auth
 
 def cadastro(request):
     if request.method == "POST":
@@ -63,4 +64,16 @@ def cadastro(request):
         return render(request, 'cadastro.html')
 
 def login(request):
-    return render(request, 'login.html')
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        usuario = request.POST.get("usuario")
+        senha = request.POST.get("senha")
+        
+        user = auth.authenticate(username=usuario, password=senha)
+        
+        if not user:
+            return redirect(reverse('login'))
+        
+        auth.login(request, user)
+        return HttpResponse("Certo")
