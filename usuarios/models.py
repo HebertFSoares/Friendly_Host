@@ -5,7 +5,7 @@ class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     data_nascimento = models.DateField()
     user_type = models.CharField(max_length=50)
-    esstado_civil = models.CharField(max_length=50)
+    estado_civil = models.CharField(max_length=50)
     
     # Campos extras para o tipo de usuário "estudante"
     
