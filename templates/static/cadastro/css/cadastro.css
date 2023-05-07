@@ -38,6 +38,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #007bff;
     font-size: 2vw;
+    font-weight: 750;
     margin-bottom: 20px;
   }
   
@@ -93,7 +94,7 @@
     border-radius: 10px;
   }
   
-  .textfield select {
+  .form-group select {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -153,4 +154,3 @@
   .logo img {
     width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
   }
-  
