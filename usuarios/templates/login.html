@@ -9,7 +9,7 @@
 <body>
   <div class="login-container">
     <div class="left-login">
-      <h1>Bem-vindo de volta!</h1>
+      <h1>Bem-Vindo de volta!</h1>
       <img src="{% static 'login/img/login.svg' %}" class="left-login-image" alt="Login">
     </div>
     <div class="right-login">
@@ -21,7 +21,7 @@
           <form action="{% url 'login' %}" method="POST" class="textfield">
             {% csrf_token %}
             <div class="form-group">
-              <h2>Entre na sua conta</h2>
+              <h2>Sua conta</h2>
               <div class="textfield">
                 <label for="usuario">Usuário</label>
                 <input type="text" name="usuario" placeholder="Usuário" required>
@@ -40,9 +40,11 @@
       </div>
     </div>
   </div>
+  <button id="dark-mode-button">Alternar Modo</button> <!-- Botão para alternar modo escuro e modo claro -->
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="{% static 'login/js/login.js' %}"></script>
 </body>
 </html>
