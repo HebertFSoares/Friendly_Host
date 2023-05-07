@@ -57,7 +57,10 @@ def cadastro(request):
             comodidades = comodidades
          )
         
-        return HttpResponse("Certo")
+        return redirect(reverse('login'))
     
     elif request.method == "GET":
         return render(request, 'cadastro.html')
+
+def login(request):
+    return render(request, 'login.html')
