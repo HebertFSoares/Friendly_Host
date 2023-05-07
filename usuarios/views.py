@@ -5,6 +5,10 @@ from .models import Perfil
 from django.http import HttpResponse
 import time
 from django.contrib import auth
+from django.contrib import messages
+from django.contrib.messages import constants
+from datetime import datetime
+import re
 
 def cadastro(request):
     if request.method == "POST":
@@ -12,7 +16,7 @@ def cadastro(request):
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         confirma_senha = request.POST.get("confirma_senha")
-        data_nascimento = request.POST.get("data_nascimento")
+        data_nascimento_str = request.POST.get("data_nascimento")
         user_type = request.POST.get("user_type")
         estado_civil = request.POST.get("estado_civil")
         cpf_estudante = request.POST.get("cpf")
@@ -27,9 +31,76 @@ def cadastro(request):
         descricao_espaco = request.POST.get("descricao_espaco")
         comodidades = request.POST.get("comodidades")
         
+        data_nascimento = None
+        idade_minima = 17
         # Verificações
-        if not (senha == confirma_senha):
+        
+        if not data_nascimento_str:
+            messages.error(request, 'A data de nascimento é obrigatória.')
             return redirect(reverse('cadastro'))
+
+        try:
+            data_nascimento = datetime.strptime(data_nascimento_str, '%Y-%m-%d').date()
+        except ValueError:
+            messages.error(request, 'A data de nascimento possui um formato inválido.')
+            return redirect(reverse('cadastro'))
+
+        if data_nascimento is None or data_nascimento.year is None:
+            messages.error(request, 'A data de nascimento é inválida.')
+            return redirect(reverse('cadastro'))
+
+        idade = datetime.now().date().year - data_nascimento.year
+        
+        if idade < idade_minima:
+            messages.add_message(request, constants.ERROR, 'Você deve ter pelo menos 17 anos para se cadastrar.')
+            return redirect(reverse('cadastro'))
+        
+        if not usuario or not email or not senha or not confirma_senha or not data_nascimento:
+            messages.add_message(request, constants.ERROR, 'A campos obrigatórios vazios.')
+            return redirect(reverse('cadastro'))
+        
+        if User.objects.filter(username=usuario).exists():
+            messages.add_message(request, constants.ERROR, 'O nome de usuário já está em uso por outro usuário.')
+            return redirect(reverse('cadastro'))
+
+        if not (senha == confirma_senha):
+            messages.add_message(request, constants.ERROR, 'As senhas não coincidem.')
+            return redirect(reverse('cadastro'))
+        
+        if len(senha) < 8:
+            messages.add_message(request, constants.ERROR, 'A senha deve conter pelo menos 8 caracteres.')
+            return redirect(reverse('cadastro'))
+        
+        if not re.search(r'[A-Z]', senha) or not re.search(r'[a-z]', senha) or not re.search(r'\d', senha):
+            messages.add_message(request, constants.ERROR, 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um dígito.')
+            return redirect(reverse('cadastro'))
+        
+        usuarios = User.objects.filter(email=email)
+        if usuarios.exists():
+            messages.add_message(request, constants.ERROR, 'O email já está em uso por outro usuário.')
+            return redirect(reverse('cadastro'))
+       
+        if user_type == 'estudante':
+            if not cpf_estudante:
+                messages.add_message(request, constants.ERROR, 'O campo CPF do estudante é obrigatório.')
+                return redirect(reverse('cadastro'))
+            if len(cpf_estudante) != 11:
+                messages.add_message(request, constants.ERROR, 'CPF do estudante inválido.')
+                return redirect(reverse('cadastro'))
+            if Perfil.objects.filter(cpf_estudante=cpf_estudante).exists():
+                messages.add_message(request, constants.ERROR, 'Cpf Inválido.')
+                return redirect(reverse('cadastro'))
+        
+        if user_type == 'anfitriao':
+            if not cpf_anfitriao:
+                messages.add_message(request, constants.ERROR, 'O campo CPF do anfitrião é obrigatório.')
+                return redirect(reverse('cadastro'))
+            if len(cpf_anfitriao) != 11:
+                messages.add_message(request, constants.ERROR, 'CPF do anfitrião inválido.')
+                return redirect(reverse('cadastro'))
+            if Perfil.objects.filter(cpf_anfitriao=cpf_anfitriao).exists():
+                messages.add_message(request, constants.ERROR, 'Cpf Inválido.')
+                return redirect(reverse('cadastro'))
         
         # Cria um novo usuário
         
@@ -57,7 +128,7 @@ def cadastro(request):
             descricao_espaco = descricao_espaco,
             comodidades = comodidades
          )
-        
+        messages.add_message(request, constants.SUCCESS, 'Cadastrado com sucesso.')
         return redirect(reverse('login'))
     
     elif request.method == "GET":
