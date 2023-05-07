@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="{% static 'login/css/login.css' %}">
 </head>
 <body>
+    <button id="dark-mode-button" class="toggle-mode-button">
+        <span class="sun-icon"></span>
+        <span class="moon-icon"></span>
+            <img src="{% static 'login/img/moon.png' %}" class="toggle-mode-button .moon-icon " alt="Login">
+  </button> <!-- Botão para alternar modo escuro e modo claro -->
   <div class="login-container">
     <div class="left-login">
       <h1>Bem-Vindo de volta!</h1>
@@ -40,7 +45,6 @@
       </div>
     </div>
   </div>
-  <button id="dark-mode-button">Alternar Modo</button> <!-- Botão para alternar modo escuro e modo claro -->
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
