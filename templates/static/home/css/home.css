@@ -119,12 +119,16 @@ body {
   }
   .image-container2{
     position: absolute;
-    top: 85%;
-    right: -8%;
+    top: 80%;
+    right: -10%;
     transform: translate(-50%, -50%);
   }
   .image-container2 img {
-    width: 500px;
+    width: 400px;
     height: auto;
   }
+  .custom-card {
+    width: 100%; /* ou qualquer outra largura desejada */
+  }
+  
   

@@ -31,9 +31,10 @@ def cadastro(request):
         descricao_espaco = request.POST.get("descricao_espaco")
         comodidades = request.POST.get("comodidades")
         
+       
+        # Verificações
         data_nascimento = None
         idade_minima = 17
-        # Verificações
         
         if not data_nascimento_str:
             messages.error(request, 'A data de nascimento é obrigatória.')
