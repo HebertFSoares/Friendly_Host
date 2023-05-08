@@ -154,6 +154,4 @@ def login(request):
         
         auth.login(request, user)
         return redirect(reverse('home'))
-    
-def home(request):
-    return render(request, 'home.html')
+
