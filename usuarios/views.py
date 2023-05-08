@@ -152,4 +152,7 @@ def login(request):
             return redirect(reverse('login'))
         
         auth.login(request, user)
-        return HttpResponse("Certo")
+        return redirect(reverse('home'))
+    
+def home(request):
+    return render(request, 'home.html')
