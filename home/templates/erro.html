@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,12 +40,26 @@
     .btn:hover {
       background-color: #1976d2;
     }
+    
+    .svg-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .svg-image {
+      max-width: 200px;
+      max-height: 200px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Acesso Negado</h1>
     <p>Você não tem permissão para acessar esta página.</p>
+    <div class="svg-container">
+        <img src="{% static 'home/img/erro.svg' %}" alt="Imagem" class="svg-image">
+    </div>
     <a href="{% url 'login' %}" class="btn">Voltar</a>
   </div>
 
