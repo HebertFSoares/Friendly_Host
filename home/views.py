@@ -3,5 +3,5 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def home(request):
+def home_estudante(request):
     return render(request, 'home.html')
