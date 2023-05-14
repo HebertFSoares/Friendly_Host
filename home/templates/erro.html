@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso Negado</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2196f3;
+    }
+
+    p {
+      color: #777;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #2196f3;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Acesso Negado</h1>
+    <p>Você não tem permissão para acessar esta página.</p>
+    <a href="{% url 'login' %}" class="btn">Voltar</a>
+  </div>
+
+  <script>
+    document.querySelector('.btn').addEventListener('click', function() {
+      history.back(); // Volta para a página anterior
+    });
+  </script>
+</body>
+</html>
