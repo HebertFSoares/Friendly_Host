@@ -105,30 +105,31 @@ def cadastro(request):
         
         # Cria um novo usuário
         
-        username = f"{usuario}_{int(time.time())}"
+        username = usuario
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
+
         
         # Cria o perfil do usuário com os campos extras
          
         perfil = Perfil.objects.create(
-            usuario = user,
-            data_nascimento = data_nascimento,
-            user_type = user_type,
-            estado_civil = estado_civil,
-            cpf_estudante = cpf_estudante,
-            telefone_estudante = telefone,
-            nome_pai = nome_pai,
-            nome_mae = nome_mae,
-            instituicao = instituicao,
-            periodo = periodo,
-            resumo_academico = resumo_academico,
-            cpf_anfitriao = cpf_anfitriao,
-            telefone_anfitriao = telefone,
-            endereco = endereco,
-            descricao_espaco = descricao_espaco,
-            comodidades = comodidades
-         )
+            usuario=user,
+            data_nascimento=data_nascimento,
+            user_type=user_type,
+            estado_civil=estado_civil,
+            cpf_estudante=cpf_estudante,
+            telefone_estudante=telefone,
+            nome_pai=nome_pai,
+            nome_mae=nome_mae,
+            instituicao=instituicao,    
+            periodo=periodo,
+            resumo_academico=resumo_academico,
+            cpf_anfitriao=cpf_anfitriao,
+            telefone_anfitriao=telefone,
+            endereco=endereco,
+            descricao_espaco=descricao_espaco,
+            comodidades=comodidades
+        )
         messages.add_message(request, constants.SUCCESS, 'Cadastrado com sucesso.')
         return redirect(reverse('login'))
     
