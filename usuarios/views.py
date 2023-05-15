@@ -154,4 +154,4 @@ def login(request):
         
         auth.login(request, user)
         return redirect(reverse('home_estudante'))
-
+    
