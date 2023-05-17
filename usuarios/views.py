@@ -156,3 +156,7 @@ def login(request):
         auth.login(request, user)
         return redirect(reverse('home_estudante'))
     
+def logout(request):
+    auth.logout(request)
+    messages.add_message(request, constants.SUCCESS, 'obrigado pela visita. até breve!')
+    return redirect(reverse('login'))
