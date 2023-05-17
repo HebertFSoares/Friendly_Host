@@ -7,6 +7,7 @@ import time
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.messages import constants
+from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import datetime
 import re
 
@@ -136,6 +137,20 @@ def cadastro(request):
     elif request.method == "GET":
         return render(request, 'cadastro.html')
 
+def is_estudante(user):
+    try:
+        perfil = Perfil.objects.get(usuario=user)
+        return perfil.user_type == 'estudante'
+    except Perfil.DoesNotExist:
+        return False
+
+def is_anfitriao(user):
+    try:
+        perfil = Perfil.objects.get(usuario=user)
+        return perfil.user_type == 'anfitriao'
+    except Perfil.DoesNotExist:
+        return False
+
 def login(request):
     if request.method == "GET":
         return render(request, 'login.html')
@@ -143,20 +158,30 @@ def login(request):
         usuario = request.POST.get("usuario")
         senha = request.POST.get("senha")
         
-        user = auth.authenticate(username=usuario, password=senha)
-        
-        if not user:
-            messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
-            return redirect(reverse('login'))
-        
         if not usuario or not senha:
             messages.add_message(request, constants.ERROR, 'Por favor, preencha todos os campos.')
             return redirect(reverse('login'))
         
+        user = auth.authenticate(username=usuario, password=senha)
+        
+        if not user:
+            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
+            return redirect(reverse('login'))
+        
         auth.login(request, user)
-        return redirect(reverse('home_estudante'))
+        
+        # Verificar o tipo de usuário e redirecionar para a página correta
+        if is_estudante(user):
+            return redirect(reverse('home_estudante'))
+        
+        if is_anfitriao(user):
+            return redirect(reverse('anfitriao_home'))
+
+
     
 def logout(request):
     auth.logout(request)
     messages.add_message(request, constants.SUCCESS, 'obrigado pela visita. até breve!')
     return redirect(reverse('login'))
+
+
