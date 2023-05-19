@@ -1,72 +1,68 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acesso Negado</title>
+  <title>Erro 404</title>
   <style>
     body {
-      background-color: #ffffff;
+      background-color: #f8f8f8;
       font-family: Arial, sans-serif;
     }
-
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #2196f3;
-    }
-
-    p {
-      color: #777;
-      margin-top: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: #2196f3;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 4px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-
-    .btn:hover {
-      background-color: #1976d2;
-    }
     
-    .svg-container {
+    .error-container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      align-items: center;
+      height: 100vh;
     }
     
-    .svg-image {
-      max-width: 200px;
-      max-height: 200px;
+    .error-message {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .error-title {
+      margin: 5px;
+      font-size: 37px;
+      color: #007bff;
+      margin-bottom: 5px;
+    }
+    
+    .error-paragraph {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+    
+    .error-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      margin: 25px;
+      text-decoration: none;
+      border-radius: 55px;
+    }
+    
+    .error-right {
+      margin-left: 50px;
+    }
+    
+    .error-svg {
+      width: 700px;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Acesso Negado</h1>
-    <p>Você não tem permissão para acessar esta página.</p>
-    <div class="svg-container">
-        <img src="{% static 'home/img/erro.svg' %}" alt="Imagem" class="svg-image">
+  <div class="error-container">
+    <div class="error-message">
+      <h1 class="error-title">Erro 404 - Página não encontrada</h1>
+      <p class="error-paragraph">Desculpe, a página que você está procurando não pode ser encontrada. Verifique se o URL está correto ou entre em contato com o suporte para obter assistência.</p>
+      <a class="error-button" href="{% url 'login' %}">Ir para a tela de login</a>
     </div>
-    <a href="{% url 'login' %}" class="btn">Voltar</a>
+    <div class="error-right">
+        <img class="error-svg" src="{% static 'home/img/erro.svg' %}" alt="erro">
+    </div>
   </div>
-
-  <script>
-    document.querySelector('.btn').addEventListener('click', function() {
-      history.back(); // Volta para a página anterior
-    });
-  </script>
 </body>
 </html>
