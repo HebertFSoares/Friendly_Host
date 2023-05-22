@@ -45,13 +45,32 @@
     </div>
   </nav>
   <div class="container">
+     {% if messages %}
+          {% for message in messages %}
+              <div class="alert {{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
     <h2 class="form-title">Adicionar Vaga</h2>
-    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" class="btn btn-primary" value="Cadastrar">
-    </form>
+    <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" class="btn btn-primary" value="Cadastrar">
+</form>
+
+{% if form.errors %}
+  <div class="errorlist">
+    <ul>
+      {% for field in form %}
+        {% if field.errors %}
+          <li>{{ field.label }}: {{ field.errors|striptags }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
   </div>
 </body>
 </html>

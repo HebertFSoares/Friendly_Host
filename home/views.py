@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .forms import AdicionarVagaForm
 from .models import VagaCasa
+from django.contrib import messages
+from django.contrib.messages import constants
 
 
 def is_estudante(user):
@@ -61,7 +63,9 @@ def adicionar_vaga(request):
             vaga.save()
             
             # Redirecionar para a página de sucesso ou exibir uma mensagem de confirmação
+            messages.add_message(request, constants.SUCCESS, 'Vaga cadastrada com sucesso')
             return redirect(reverse('adicionar_vaga'))
+            
             
         
     else:
