@@ -36,10 +36,6 @@ def home_anfitriao(request):
 def error(request):
     return render(request, 'erro.html')
 
-from django.shortcuts import render, redirect
-from .forms import AdicionarVagaForm
-from .models import VagaCasa
-
 def adicionar_vaga(request):
     if request.method == 'POST':
         form = AdicionarVagaForm(request.POST)
@@ -65,7 +61,8 @@ def adicionar_vaga(request):
             vaga.save()
             
             # Redirecionar para a página de sucesso ou exibir uma mensagem de confirmação
-            return ("Certo")  # substitua 'pagina_sucesso' pela URL correta da página de sucesso
+            return redirect(reverse('adicionar_vaga'))
+            
         
     else:
         form = AdicionarVagaForm()

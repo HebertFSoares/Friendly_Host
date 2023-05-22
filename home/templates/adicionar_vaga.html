@@ -46,10 +46,11 @@
   </nav>
   <div class="container">
     <h2 class="form-title">Adicionar Vaga</h2>
-    <form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Salvar</button>
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" class="btn btn-primary" value="Cadastrar">
     </form>
   </div>
 </body>

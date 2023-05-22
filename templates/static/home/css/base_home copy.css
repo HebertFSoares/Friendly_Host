@@ -242,3 +242,62 @@ p {
   width: 100%; /* ou qualquer outra largura desejada */
 }
 
+/* Estilização do formulário */
+form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-bottom: 1px solid #ccc;
+}
+
+table th,
+table td {
+  padding: 10px;
+}
+
+table th {
+  text-align: left;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="submit"] {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+.errorlist {
+  color: #dc3545;
+  margin-top: 5px;
+  padding-left: 0;
+  list-style: none;
+}
+
