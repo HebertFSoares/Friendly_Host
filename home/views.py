@@ -32,3 +32,6 @@ def home_anfitriao(request):
 
 def error(request):
     return render(request, 'erro.html')
+
+def adicionar_vaga(request):
+    pass
