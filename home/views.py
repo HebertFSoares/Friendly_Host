@@ -65,7 +65,7 @@ def adicionar_vaga(request):
             vaga.save()
             
             # Redirecionar para a página de sucesso ou exibir uma mensagem de confirmação
-            return redirect('pagina_sucesso')  # substitua 'pagina_sucesso' pela URL correta da página de sucesso
+            return ("Certo")  # substitua 'pagina_sucesso' pela URL correta da página de sucesso
         
     else:
         form = AdicionarVagaForm()

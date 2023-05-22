@@ -1,0 +1,12 @@
+{% extends "home_anfitriao" %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Adicionar Vaga</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+{% endblock %}
