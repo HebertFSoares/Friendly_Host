@@ -108,7 +108,7 @@ body {
   }
 
   .image-container img {
-    width: 500px;
+    width: 400px;
     height: auto;
   }
   .card-title{
@@ -120,11 +120,11 @@ body {
   .image-container2{
     position: absolute;
     top: 80%;
-    right: -10%;
+    right: -8%;
     transform: translate(-50%, -50%);
   }
   .image-container2 img {
-    width: 400px;
+    width: 325px;
     height: auto;
   }
   .custom-card {
