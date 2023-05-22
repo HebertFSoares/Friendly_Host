@@ -20,13 +20,13 @@ def is_anfitriao(user):
 
 @login_required
 def home_estudante(request):
-    if not is_estudante(request.user):
+    if not is_estudante(request.user) and not request.user.is_superuser:
         return HttpResponseRedirect(reverse('error'))
     return render(request, 'home_estudante.html')
 
 @login_required
 def home_anfitriao(request):
-    if not is_anfitriao(request.user):
+    if not is_estudante(request.user) and not request.user.is_superuser:
         return HttpResponseRedirect(reverse('error'))
     return render(request, 'home_anfitriao.html')
 
