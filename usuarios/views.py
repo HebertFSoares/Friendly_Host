@@ -32,7 +32,6 @@ def cadastro(request):
         descricao_espaco = request.POST.get("descricao_espaco")
         comodidades = request.POST.get("comodidades")
         
-       
         # Verificações
         data_nascimento = None
         idade_minima = 17
@@ -122,7 +121,7 @@ def cadastro(request):
             telefone_estudante=telefone,
             nome_pai=nome_pai,
             nome_mae=nome_mae,
-            instituicao=instituicao,    
+            instituicao=instituicao,
             periodo=periodo,
             resumo_academico=resumo_academico,
             cpf_anfitriao=cpf_anfitriao,
