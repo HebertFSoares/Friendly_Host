@@ -81,4 +81,10 @@ class AdicionarVagaView(CreateView):
     model = 'VagaCasa'
     form_class = AdicionarVagaForm
     template_name = 'adicionar_vaga.html'
-    success_url = reverse_lazy('adicionar_vaga.html')
+    success_url = reverse_lazy('adicionar_vaga')
+    
+    def form_valid(self, form):
+        # Adicione a mensagem de sucesso
+        messages.success(self.request, 'Vaga adicionada com sucesso!')
+        
+        return super().form_valid(form)
