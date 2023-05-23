@@ -45,7 +45,7 @@
     </div>
   </nav>
   <div class="container">
-     {% if messages %}
+    {% if messages %}
           {% for message in messages %}
               <div class="alert {{ message.tags }}">{{ message }}</div>
           {% endfor %}

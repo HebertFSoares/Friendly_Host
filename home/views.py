@@ -7,7 +7,8 @@ from .forms import AdicionarVagaForm
 from .models import VagaCasa
 from django.contrib import messages
 from django.contrib.messages import constants
-
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 
 def is_estudante(user):
     try:
@@ -38,6 +39,8 @@ def home_anfitriao(request):
 def error(request):
     return render(request, 'erro.html')
 
+
+'''
 def adicionar_vaga(request):
     if request.method == 'POST':
         form = AdicionarVagaForm(request.POST)
@@ -72,3 +75,10 @@ def adicionar_vaga(request):
         form = AdicionarVagaForm()
     
     return render(request, 'adicionar_vaga.html', {'form': form})
+'''
+
+class AdicionarVagaView(CreateView):
+    model = 'VagaCasa'
+    form_class = AdicionarVagaForm
+    template_name = 'adicionar_vaga.html'
+    success_url = reverse_lazy('adicionar_vaga.html')
