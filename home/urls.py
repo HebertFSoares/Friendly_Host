@@ -7,5 +7,5 @@ urlpatterns = [
     path('anfitriao/', views.home_anfitriao, name='home_anfitriao'),
     path('error/', views.error, name="error"),
     path('adicionar_vaga/', views.AdicionarVagaView.as_view(), name="adicionar_vaga"),
-    
+    path('list_vagas', views.VagasListView.as_view(), name="list_vagas"),
 ]

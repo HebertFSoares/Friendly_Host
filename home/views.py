@@ -51,5 +51,5 @@ class AdicionarVagaView(CreateView):
     
 class VagasListView(ListView):
     model = VagaCasa
-    template_name = 'list_vaga.html'
+    template_name = 'list_vagas.html'
     context_object_name = 'vagas'
