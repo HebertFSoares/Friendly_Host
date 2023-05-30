@@ -1,15 +1,25 @@
-{% block content %}
-  <h1>Listagem de Vagas</h1>
-  {% if vagas %}
-    <ul>
+<form method="GET" action="{% url 'cars_list' %}">
+    <input type="text" name="search" placeholder="Buscar carro...">
+    <button type="submit">Buscar</button>
+</form>
+
+  <div class="car-grid">
+    {% if vagas %}
       {% for vaga in vagas %}
-        <li>{{ vaga.titulo }}</li>
-        <li>{{ vaga.descricao }}</li>
-        <li>{{ vaga.local }}</li>
-        <!-- Adicione outros campos do modelo conforme necessário -->
+        <div class="car-card">
+        {% if vaga.photo %}
+            <img src="{{ vaga.photo.url }}" alt="{{ vaga.titulo }} - {{ vaga.descricao }}">
+
+        {% else %}
+          <p class="no-photo">Foto não disponivel</p>
+        {% endif %}
+          <h2>{{ car.titulo }} {{ car.descricao }}</h2>
+          <p>{{ car.local }}
+        </div>
+        </a>
       {% endfor %}
-    </ul>
-  {% else %}
-    <p>Nenhuma vaga cadastrada.</p>
-  {% endif %}
+    {% else %}
+      <p class="no-results">Nenhuma vaga cadastrada.</p>
+    {% endif %}
+  </div>
 {% endblock %}
