@@ -1,4 +1,28 @@
-body {
+
+.vagas-container {
+    display: flex;
+    flex-direction: column; /* Define a direção como coluna */
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Margem inferior para separar os cards */
+  }
+  
+  .card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -130,5 +154,7 @@ body {
   .custom-card {
     width: 100%; /* ou qualquer outra largura desejada */
   }
+  
+  
   
   
