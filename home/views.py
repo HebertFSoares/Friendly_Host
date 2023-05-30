@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from usuarios.models import Perfil
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -48,7 +48,7 @@ class AdicionarVagaView(CreateView):
     def form_valid(self, form):
         messages.success(self.request, 'Vaga adicionada com sucesso!')
         return super().form_valid(form)
-    
+
 class VagasListView(ListView):
     model = VagaCasa
     template_name = 'list_vagas.html'
