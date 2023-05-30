@@ -1,4 +1,4 @@
-# Friendly_Host-DJANGO
+# Friendly_Host
 
 O Sistema de Adoção de Estudantes é uma plataforma desenvolvida para conectar estudantes e anfitriões, permitindo que estudantes fiquem mais próximos de uma instituição. O sistema permite o cadastro de estudantes, instituições e anfitriões, bem como o registro de adoção de estudantes pelos anfitriões.
 
