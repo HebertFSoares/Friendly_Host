@@ -1,0 +1,1 @@
+web: gunicorn friendly_host.wsgi
