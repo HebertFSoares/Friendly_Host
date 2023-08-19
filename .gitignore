@@ -1,0 +1,10 @@
+# Ignorar o arquivo settings.py da pasta friendly_host
+friendly_host/settings.py
+
+# Outras entradas do .gitignore abaixo...
+
+# Arquivos de configuração específicos do IDE
+.idea/
+.vscode/
+
+# Outros arquivos e pastas a serem ignorados...
