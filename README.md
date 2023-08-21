@@ -14,7 +14,7 @@ O Sistema de Adoção de Estudantes é uma plataforma desenvolvida para conectar
 ## Tecnologias Utilizadas
 - Python
 - Django
-- Sqlite
+- PostgreSQL
 - HTML/CSS/JavaScript
 - Bootstrap
 
